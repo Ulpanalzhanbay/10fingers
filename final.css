@@ -1,0 +1,485 @@
+/* 1) Global resets & font */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: monospace;
+  background: #65B1FB;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+/* 2) Hide all sections by default */
+.section {
+  display: none;
+}
+
+/* 3) Top Bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  position: sticky;
+  top: 0;
+  background: #65B1FB;
+  z-index: 200;
+}
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logo-img {
+  width: 130px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.logo-text .ten {
+  font-size: 50px;
+  color: #008cff;
+}
+.logo-text .fingers {
+  font-size: 30px;
+  color: #fff;
+}
+
+/* 4) Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0; left: -260px;
+  width: 260px;
+  height: 100%;
+  background: #D9D9D9;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.sidebar.open {
+  left: 0;
+}
+.sidebar-content {
+  padding: 20px;
+  overflow-y: auto;
+}
+.nav-items .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.nav-items .nav-item:first-child {
+  margin-top: 50px;
+}
+.nav-items .nav-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+.nav-items .icon {
+  width: 32px;
+  height: 32px;
+}
+.modern-ink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.modern-ink:hover {
+  background: rgba(0,0,0,0.05);
+}
+.palette-img {
+  width: 28px;
+  height: 28px;
+}
+.account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background: rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+.account img {
+  width: 32px;
+  height: 32px;
+}
+
+/* 5) Button Bar */
+.button-bar {
+  max-width: 900px;
+  margin: 30px auto;
+  background: #D9D9D9;
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.button-bar button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+.button-bar img {
+  width: 18px;
+  height: 18px;
+}
+.divider {
+  width: 2px;
+  height: 25px;
+  background: rgba(0,0,0,0.3);
+}
+
+/* 6) Language switch */
+.language {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 18px;
+  margin: 20px auto;
+}
+.language img {
+  width: 32px;
+  height: 32px;
+}
+
+/* 7) Home Section */
+.text-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+#practiceText {
+  font-size: 18px;
+  line-height: 1.6;
+  transition: filter 0.3s ease;
+}
+#focusOverlay {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.text-content.blurred #practiceText {
+  filter: blur(4px);
+}
+.text-content.blurred #focusOverlay {
+  display: flex;
+}
+#reloadBtn {
+  margin: 20px auto 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#reloadBtn:hover .reload-icon {
+  transform: rotate(20deg);
+}
+.reload-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* 8) Information Section */
+.information-content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #D9D9D9;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.information-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #008cff;
+}
+.information-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* 9) Settings Section */
+.settings-content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #D9D9D9;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.settings-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #008cff;
+}
+.setting-item {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+.setting-item label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+#saveBtn {
+  padding: 10px 20px;
+  background: #008cff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  margin: 0 auto;
+}
+#saveBtn:hover {
+  background: #006bbf;
+}
+
+/* 10) Login Section */
+.box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  padding: 40px 0;
+}
+.box {
+  background: rgba(217,217,217,0.8);
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.box h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.box .icon {
+  width: 28px;
+}
+.box input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: #008cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.btn:hover {
+  background: #006bbf;
+}
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #eee;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.social-btn img {
+  width: 18px;
+}
+.or {
+  display: block;
+  margin: 12px 0;
+  color: #666;
+}
+.remember {
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.forgot {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+}
+.forgot:hover {
+  text-decoration: underline;
+}
+
+/* 11) Game Section */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+.tracks {
+  width: 90%;
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+.track {
+  position: relative;
+  height: 60px;
+  margin: 12px 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 30px;
+}
+.racer, .finish {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  transition: left 0.4s ease;
+}
+.racer {
+  left: 0;
+}
+.finish {
+  right: 0;
+  opacity: 0.6;
+}
+#text {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 10px;
+}
+#input {
+  width: 90%;
+  max-width: 800px;
+  height: 80px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  resize: none;
+}
+
+/* 12) Modern-Ink Dark Mode */
+body.ink-mode {
+  background: #111;
+  color: #eee;
+}
+body.ink-mode .sidebar,
+body.ink-mode .button-bar {
+  background: #222;
+}
+body.ink-mode .top-bar,
+body.ink-mode .section,
+body.ink-mode .main-area {
+  background: #1a1a1a;
+  color: #eee;
+}
+
+/* ———————————————————————————————— */
+/*  CENTER LOGIN & GAME SECTIONS        */
+/* ———————————————————————————————— */
+#loginSection,
+#gameSection {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+  width: 100%;
+}
+
+/* ———————————————————————————————— */
+/*  LETTER HIGHLIGHTING & HIDE FINISH   */
+/* ———————————————————————————————— */
+#text span {
+  display: inline-block;
+  padding: 0 2px;
+  transition: color 0.2s ease;
+}
+#text span.correct {
+  color: #4CAF50;
+}
+#text span.wrong {
+  color: #F44336;
+}
+.track .finish {
+  display: none;
+}
+
+/* ———————————————————————————————— */
+/*  DARK MODE FOR LOGIN BOXES           */
+/* ———————————————————————————————— */
+body.ink-mode .box-container {
+  background: #1a1a1a;
+}
+body.ink-mode .box {
+  background: rgba(40, 40, 40, 0.85);
+  color: #eee;
+}
+body.ink-mode .box input {
+  background: #333;
+  color: #eee;
+}
+body.ink-mode .box .btn {
+  background: #006bbf;
+}
+body.ink-mode .box .btn:hover {
+  background: #005599;
+}
+body.ink-mode .social-btn {
+  background: #444;
+  color: #eee;
+}
+body.ink-mode .social-btn img {
+  filter: invert(1);
+}
+body.ink-mode .forgot,
+body.ink-mode .or,
+body.ink-mode .remember {
+  color: #ccc;
+}
