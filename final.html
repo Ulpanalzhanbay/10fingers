@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>10fingers</title>
+  <link rel="stylesheet" href="final.css" />
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="left-side">
+      <img src="astronaut.png" alt="logo" class="logo-img" id="logo" />
+      <span class="logo-text">
+        <span class="ten">10</span><span class="fingers">fingers</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+      <div class="nav-items">
+        <div class="nav-item" id="navHome">
+          <img src="keyboard black.png" class="icon" /><span>Home</span>
+        </div>
+        <div class="nav-item" id="navGame">
+          <img src="crown black.png" class="icon" /><span>Game</span>
+        </div>
+        <div class="nav-item" id="navInfo">
+          <img src="information black.png" class="icon" /><span>Information</span>
+        </div>
+        <div class="nav-item" id="navSettings">
+          <img src="settings black.png" class="icon" /><span>Settings</span>
+        </div>
+      </div>
+      <div class="modern-ink" id="inkToggle">
+        <img src="palet black.png" alt="ink" class="palette-img" />modern ink
+      </div>
+    </div>
+    <div class="account" id="toLogin">
+      <img src="account black.png" alt="account" /><span>log in</span>
+    </div>
+  </div>
+
+  <!-- Button bar -->
+  <div class="button-bar" id="buttonBar">
+    <button><img src="@ black.png" alt="@"> punctuation</button>
+    <button><img src="number black.png" alt="#"> number</button>
+    <div class="divider"></div>
+    <button><img src="clock black.png" alt="clock"> time</button>
+    <button><img src="A black.png" alt="A"> words</button>
+    <button><img src="quote black.png" alt="quote"> quote</button>
+    <button><img src="idea black.png" alt="idea"> custom</button>
+    <div class="divider"></div>
+    <button>15</button><button>30</button><button>60</button><button>120</button>
+    <button><img src="tools black.png" alt="tools" class="tools-icon"></button>
+  </div>
+
+  <!-- Language switch -->
+  <div class="language">
+    <img src="world black.png" alt="earth" /><span class="english-text">english</span>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-area">
+    <!-- HOME -->
+    <div id="homeSection" class="section text-content">
+      <div id="focusOverlay">
+        <img src="cursor black.png" alt="cursor" />
+        <p>Click here or press any key to focus</p>
+      </div>
+      <p id="practiceText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <button id="reloadBtn">
+        <img src="reload black.png" alt="reload" class="reload-icon" />
+      </button>
+    </div>
+
+    <!-- INFO -->
+    <div id="infoSection" class="section information-content">
+      <h2>Information</h2>
+      <p>Welcome to 10fingers. Here you can practice typing with various tests and challenges.</p>
+      <p>Improve your speed, accuracy, and consistency while having fun.</p>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="settingsSection" class="section settings-content">
+      <h1>Settings</h1>
+      <div class="setting-item">
+        <label><input type="checkbox" id="blindMode" /> Blind Mode</label>
+      </div>
+      <!-- остальные настройки... -->
+      <button id="saveBtn">Save &amp; Go Back</button>
+    </div>
+
+    <!-- LOGIN / REGISTRATION -->
+    <div id="loginSection" class="section box-container">
+      <div class="box register-box">
+        <h2><img src="reg black.png" class="icon" alt="" /> Регистрация</h2>
+        <form id="registerForm">
+          <input type="text"    placeholder="Username"               required />
+          <input type="email"   placeholder="Email"                  required />
+          <input type="email"   placeholder="Подтвердите Email"      required />
+          <input type="password" placeholder="Password"             required minlength="6" />
+          <input type="password" placeholder="Подтвердите Password" required minlength="6" />
+          <button type="submit" class="btn">Sign Up</button>
+        </form>
+      </div>
+      <div class="box login-box">
+        <h2><img src="login black.png" class="icon" alt="" /> Вход</h2>
+        <div class="social-login">
+          <button class="social-btn"><img src="goggle black.png" alt="G" /> Google</button>
+          <button class="social-btn"><img src="github black.png" alt="GH" /> GitHub</button>
+        </div>
+        <span class="or">or</span>
+        <form id="loginForm">
+          <input type="email"    placeholder="Email"    required />
+          <input type="password" placeholder="Password" required />
+          <label class="remember"><input type="checkbox" /> Запомнить меня</label>
+          <button type="submit" class="btn">Sign In</button>
+          <a href="#" class="forgot">Forgot password?</a>
+        </form>
+      </div>
+    </div>
+
+    <!-- GAME -->
+    <div id="gameSection" class="section game-container">
+      <div class="tracks">
+        <!-- пример одной дорожки; скопируйте .track ещё 4 раза -->
+        <div class="track">
+          <img class="racer" src="game astronaut.png" data-start="icons/start.png" data-finish="icons/finish.png" />
+          <img class="finish" src="win astronaut.png" />
+        </div>
+      </div>
+      <p id="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <textarea id="input" placeholder="Write here..." autofocus></textarea>
+    </div>
+  </div>
+
+  <script src="final.js"></script>
+</body>
+</html>
